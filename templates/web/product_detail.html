@@ -1,0 +1,99 @@
+
+{% extends "web/base.html" %}
+
+{% block content %}
+
+
+
+<div class="product-container">
+    
+    <!-- CABEÇALHO PRINCIPAL - Foco em conversão -->
+     <h1>{{ product.page_title }}</h1>
+    <header class="product-header">
+        <div class="product-gallery">
+            <img src="{{ product.image }}" alt="Imagem principal do {{ product.name }}">
+        </div>
+
+        <div class="product-intro">
+            <h2>{{ product.name }}</h2>
+
+            <!-- Prós e Contras (Muito importante para decisão rápida) -->
+            {% if product.pros_and_cons %}
+            <div class="pros-cons-container">
+                <div class="pros">
+                    <strong>Prós</strong>
+                    <ul>
+                        {% for pro in product.pros_and_cons.pros %}
+                        <li>{{ pro }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="cons">
+                    <strong>Contras</strong>
+                    <ul>
+                        {% for con in product.pros_and_cons.cons %}
+                        <li>{{ con }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Botão de Ação (Call to Action) -->
+            <div class="cta-box">
+                <a href="{{ product.affiliate_link1 }}" class="cta-button">Ver Melhor Preço</a>
+                {% if product.affiliate_link2 %}
+                <a href="{{ product.affiliate_link2 }}" class="cta-button secondary">Ver na Loja 2</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <!-- SEÇÕES DE CONTEÚDO DETALHADO -->
+    <main class="product-content">
+        <section id="introduction">
+            <p class="lead">{{ product.introduction_text }}</p>
+        </section>
+
+        <section id="comfort">
+            <h2>{{ product.comfort_section_title }}</h2>
+            <p>{{ product.comfort_section_text|linebreaks }}</p>
+        </section>
+
+        <section id="technology">
+            <h2>{{ product.technology_section_title }}</h2>
+            <p>{{ product.technology_section_text|linebreaks }}</p>
+        </section>
+
+        <section id="who-is-it-for">
+            <h2>{{ product.who_is_it_for_section_title }}</h2>
+            <p>{{ product.who_is_it_for_text|linebreaks }}</p>
+        </section>
+
+ {% if product.technical_specs %}
+<section id="specs">
+    <h2>Ficha Técnica</h2>
+    <table class="specs-table">
+      <tbody>
+    {% for key, value in product.technical_specs.items %}
+    <tr>
+        <td><strong>{{ key|capfirst }}</strong></td>
+        <td>{{ value }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+
+    </table>
+</section>
+{% endif %}
+
+        <section id="conclusion">
+            <h2>{{ product.conclusion_section_title }}</h2>
+            <p>{{ product.conclusion_text|linebreaks }}</p>
+            <div class="cta-box conclusion-cta">
+                <a href="{{ product.affiliate_link1 }}" class="cta-button">Consultar Preço e Disponibilidade</a>
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}

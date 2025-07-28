@@ -1,0 +1,36 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block title %}Contato | Guia Definitivo de Colchões{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'web/css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="contact-section">
+        <h2>Entre em Contato Conosco</h2>
+        <p>Se você tiver alguma dúvida, sugestão ou precisar de ajuda, sinta-se à vontade para nos contatar.</p>
+
+        <form class="contact-form" action="{% url 'web:contact' %}" method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'web/css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/product_detail.css' %}">
+
+    <title>{% block title %}Guia Definitivo de Colchões{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Encontre as melhores análises, comparações e guias de compra para escolher o colchão 
+      perfeito para suas noites de sono.{% endblock %}">
+    <link rel="stylesheet" href="{% static 'web/css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <header>
+        <h1><a href="{% url 'web:home' %}">Logo - Guia de Colchões</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'web:home' %}">Início</a></li>
+                <li><a href="{% url 'web:contact' %}">Contato</a></li>
+                <li><a href="{% url 'web:about' %}">Sobre Nós</a></li>
+                <li><a href="{% url 'web:faq' %}">FAQ</a></li>
+                <li><a href="{% url 'web:privacy_policy' %}">Política de Privacidade</a></li>
+                <li><a href="{% url 'web:terms_of_service' %}"> Termos de Serviço</a></li>
+                <li><a href="{% url 'web:product_detail' slug='exemplo-colchao' %}">Detalhes do Produto</a></li>
+                <!-- Adicionaremos o link para a lista de colchões mais tarde -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- O conteúdo específico de cada página será inserido aqui. -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Guia de Colchões. Todos os direitos reservados.</p>

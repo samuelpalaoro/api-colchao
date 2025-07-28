@@ -1,0 +1,98 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block title %}Guia de Colchões: Análises e Comparações para a Noite Perfeita{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'web/css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Sua Noite de Sono Perfeita Começa Aqui</h1>
+        <p>Analisamos e comparamos os melhores colchões do mercado para que você faça a escolha certa. Sem estresse, sem arrependimento.</p>
+        <a href="#featured-reviews" class="cta-button">Ver Análises Populares</a>
+    </header>
+
+    <section id="featured-reviews" class="section">
+        <h2 class="section-title">Análises em Destaque</h2>
+        <div class="card-grid">
+            {% for product in featured_products %}
+            <a href="{% url 'web:product_detail' product.slug %}" class="card">
+                <img src="{{ product.image }}" alt="Imagem principal do {{ product.name }}">
+
+                    <h3>{{ product.page_title }}</h3>
+                    <p>{{ product.expert_review_snippet|truncatewords:20 }}</p>
+                    <span class="card-link">Ler Análise &rarr;</span>
+                </div>
+            </a>
+            {% empty %}
+            <p>Nenhum produto em destaque no momento.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Seção de Guia de Compra -->
+    <section class="section">
+        <h2 class="section-title">Guia de Compra: Como Escolher seu Colchão</h2>
+        <div class="guide-section">
+            <div class="guide-item">
+                <div class="icon"><i class="fas fa-bed"></i></div>
+                <h3>Tipo de Colchão</h3>
+                <p>Molas, espuma, híbrido ou látex? Entenda os prós e contras de cada material.</p>
+            </div>
+            <div class="guide-item">
+                <div class="icon"><i class="fas fa-ruler-combined"></i></div>
+                <h3>Nível de Firmeza</h3>
+                <p>Do macio ao extrafirme, encontre o suporte ideal para sua posição de dormir e peso corporal.</p>
+            </div>
+            <div class="guide-item">
+                <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+                <h3>Orçamento</h3>
+                <p>Defina seu orçamento e descubra as melhores opções de colchões em cada faixa de preço.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Comparações -->
+    <section class="section">
+        <h2 class="section-title">Batalha dos Colchões: Comparações</h2>
+        <div class="card-grid">
+            <a href="#" class="card">
+                <img src="https://via.placeholder.com/400x250.png?text=Marca+A+vs+B" alt="Comparativo entre duas marcas de colchão">
+                <div class="card-content">
+                    <h3>Marca A vs. Marca B: Qual a melhor escolha?</h3>
+                    <p>Colocamos frente a frente duas gigantes do mercado. Veja quem vence em conforto, durabilidade e preço.</p>
+                    <span class="card-link">Ver Comparativo &rarr;</span>
+                </div>
+            </a>
+            <a href="#" class="card">
+                <img src="https://via.placeholder.com/400x250.png?text=Espuma+vs+Molas" alt="Comparativo entre colchão de espuma e de molas">
+                <div class="card-content">
+                    <h3>Espuma vs. Molas: A Batalha dos Clássicos</h3>
+                    <p>Ainda em dúvida entre a tecnologia da espuma e a tradição das molas? Nós te ajudamos a decidir.</p>
+                    <span class="card-link">Ver Comparativo &rarr;</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Não perca nenhuma análise!</h2>
+            <p>Inscreva-se e receba nossas últimas comparações e guias de compra direto no seu e-mail.</p>
+            <form class="newsletter-form" action="#" method="post">
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="Digite seu e-mail" required>
+                <button type="submit">Inscrever</button>
+            </form>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

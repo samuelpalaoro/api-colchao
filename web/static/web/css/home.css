@@ -1,0 +1,235 @@
+/* Geral */
+body {
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero .cta-button {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.hero .cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* Seções */
+.section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: #007bff;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Grid de Cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.card-content p {
+    font-size: 1em;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.card-content .card-link {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 15px;
+    align-self: flex-start;
+}
+
+.card-content .card-link:hover {
+    text-decoration: underline;
+}
+
+/* Guia de Compra */
+.guide-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.guide-item {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.guide-item .icon {
+    font-size: 3em;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.guide-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Newsletter */
+.newsletter {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 8px;
+}
+
+.newsletter h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.newsletter-form input {
+    padding: 15px;
+    width: 100%;
+    max-width: 400px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.newsletter-form button {
+    padding: 15px 30px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+}
+
+.newsletter-form button:hover {
+    background-color: #555;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2em;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+
+    .hero .cta-button {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 90%;
+        max-width: 400px;
+    }
+}
