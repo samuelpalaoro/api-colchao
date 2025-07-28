@@ -23,8 +23,7 @@
         <div class="card-grid">
             {% for product in featured_products %}
             <a href="{% url 'web:product_detail' product.slug %}" class="card">
-                <img src="{{ product.image }}" alt="Imagem principal do {{ product.name }}">
-
+                <img src="{{ product.image.url }}" alt="Imagem principal do {{ product.name }}">
                     <h3>{{ product.page_title }}</h3>
                     <p>{{ product.expert_review_snippet|truncatewords:20 }}</p>
                     <span class="card-link">Ler Análise &rarr;</span>

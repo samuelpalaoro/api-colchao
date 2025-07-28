@@ -1,55 +1,28 @@
 
 {% extends "web/base.html" %}
-
 {% block content %}
-
-
-
-<div class="product-container">
-    
-    <!-- CABEÇALHO PRINCIPAL - Foco em conversão -->
-     <h1>{{ product.page_title }}</h1>
-    <header class="product-header">
-        <div class="product-gallery">
-            <img src="{{ product.image }}" alt="Imagem principal do {{ product.name }}">
-        </div>
-
-        <div class="product-intro">
-            <h2>{{ product.name }}</h2>
-
-            <!-- Prós e Contras (Muito importante para decisão rápida) -->
-            {% if product.pros_and_cons %}
-            <div class="pros-cons-container">
-                <div class="pros">
-                    <strong>Prós</strong>
-                    <ul>
-                        {% for pro in product.pros_and_cons.pros %}
-                        <li>{{ pro }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="cons">
-                    <strong>Contras</strong>
-                    <ul>
-                        {% for con in product.pros_and_cons.cons %}
-                        <li>{{ con }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            {% endif %}
-
-            <!-- Botão de Ação (Call to Action) -->
-            <div class="cta-box">
-                <a href="{{ product.affiliate_link1 }}" class="cta-button">Ver Melhor Preço</a>
-                {% if product.affiliate_link2 %}
-                <a href="{{ product.affiliate_link2 }}" class="cta-button secondary">Ver na Loja 2</a>
-                {% endif %}
-            </div>
-        </div>
-    </header>
-
-    <!-- SEÇÕES DE CONTEÚDO DETALHADO -->
+<h1>{{ product.page_title }}</h1>
+<img src="{{ product.image }}" alt="Imagem principal do {{ product.name }}" class="product-image">
+<div class = 'pros-cons-container'>
+    <div class="pros">
+        <strong>Prós</strong>
+        <ul>
+            {% for pro in product.pros_and_cons.pros %}
+            <li>{{ pro }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="cons">
+        <strong>Contras</strong>
+        <ul>
+            {% for con in product.pros_and_cons.cons %}
+            <li>{{ con }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="cta-box">
+    <a href="{{ product.affiliate_link1 }}" class="cta-button">Ver Melhor Preço</a>
     <main class="product-content">
         <section id="introduction">
             <p class="lead">{{ product.introduction_text }}</p>

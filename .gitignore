@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+# Banco de dados local
+db.sqlite3
+
+# Pasta de virtualenv
+  venv/
+
+# Pasta de media (uploads de usuários)
+media/
+# Arquivos de ambiente (se você usar)
+.env

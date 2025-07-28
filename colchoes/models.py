@@ -30,7 +30,7 @@ class Product(models.Model):
 
     # --- 2. SEO e URL ---
     slug = models.SlugField(max_length=255, unique=True, blank=True, help_text="URL amigável (gerado automaticamente se deixado em branco).")
-    meta_title = models.CharField(max_length=70, blank=True, help_text="Título para o Google (opcional). Se vazio, um padrão será usado.")
+    meta_title = models.CharField(max_length=75, blank=True, help_text="Título para o Google (opcional). Se vazio, um padrão será usado.")
     meta_description = models.CharField(max_length=160, blank=True, help_text="Descrição para o Google (opcional).")
 
     # --- 3. Monetização e Mídia ---

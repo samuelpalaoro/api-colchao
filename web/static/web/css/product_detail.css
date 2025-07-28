@@ -1,41 +1,15 @@
-/* --- CABEÇALHO DO PRODUTO --- */
-.product-header {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 40px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
 
-.product-gallery {
-    flex: 1 1 320px;
-    min-width: 220px;
-    max-width: 420px;
-}
-
-.product-gallery img {
+/* --- Image --- */
+.product-image {
     width: 100%;
+    max-width: 600px; /* Limita o tamanho da imagem */
+    display: block;
+    margin: 0 auto 20px auto; /* Centraliza a imagem */
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
     background: #f8f9fa;
 }
 
-.product-intro {
-    flex: 2 1 340px;
-}
-
-.product-intro h1 {
-    font-size: 2.1em;
-    color: #ffffff;
-    margin-bottom: 0.2em;
-}
-
-.product-intro h2 {
-    font-size: 1.5em;
-    color: #ffffff;
-    margin-bottom: 1em;
-    font-weight: 400;
-}
 /* --- PRÓS E CONTRAS --- */
 .pros-cons-container {
     display: flex;
@@ -44,11 +18,13 @@
     flex-wrap: wrap;
 }
 .pros, .cons {
-    flex: 1 1 160px;
+    flex: 1 1 150px;
 }
 .pros-cons-container strong {
     font-size: 1.08em;
-    color: #ffffff;
+    color: #333; /* Cor mais escura para melhor leitura */
+    flex: 1 1 160px;
+    
 }
 .pros-cons-container ul {
     list-style: none;
@@ -60,17 +36,18 @@
     margin-bottom: 8px;
     border-radius: 5px;
     font-size: 0.98em;
+    list-style: none;
+
 }
 .pros li {
-    background: #219a52;           /* Verde claro */
+    background: #e9f7ef;           /* Verde claro */
     border-left: 4px solid #219a52; /* Verde forte */
-    color: #000000;
-    font-style: normal;
+    color: #212529;
 }
 .cons li {
-    background: #ff0000;            /* Vermelho claro */
+    background: #fbe9e7;            /* Vermelho claro */
     border-left: 4px solid #d32f2f; /* Vermelho forte */
-    color: #ffffff;
+    color: #212529;
 }
 
 /* --- BOTÕES DE AÇÃO --- */
@@ -113,10 +90,11 @@
 }
 .product-content h2 {
     font-size: 1.35em;
-    color: #34495e;
-    margin-top: 32px;
+    color: #34495e; 
+    margin-top: 40px;
     border-bottom: 2px solid #ecf0f1;
     padding-bottom: 8px;
+    text-align: center;
 }
 .product-content p.lead {
     font-size: 1.08em;
@@ -150,20 +128,10 @@
     .product-container {
         padding: 18px 6vw;
     }
-    .product-header {
-        flex-direction: column;
-        gap: 24px;
-    }
-    .product-gallery, .product-intro {
-        max-width: 100%;
-    }
 }
 @media (max-width: 600px) {
     .product-container {
         padding: 8px 2vw;
-    }
-    .product-header {
-        gap: 12px;
     }
     .product-intro h1 {
         font-size: 1.3em;
