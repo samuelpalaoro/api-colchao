@@ -18,12 +18,14 @@
         <a href="#featured-reviews" class="cta-button">Ver Análises Populares</a>
     </header>
 
+    <!-- Produtos em Destaque -->
     <section id="featured-reviews" class="section">
         <h2 class="section-title">Análises em Destaque</h2>
         <div class="card-grid">
             {% for product in featured_products %}
             <a href="{% url 'web:product_detail' product.slug %}" class="card">
                 <img src="{{ product.image.url }}" alt="Imagem principal do {{ product.name }}">
+                <div class="card-content">
                     <h3>{{ product.page_title }}</h3>
                     <p>{{ product.expert_review_snippet|truncatewords:20 }}</p>
                     <span class="card-link">Ler Análise &rarr;</span>
@@ -35,7 +37,7 @@
         </div>
     </section>
 
-    <!-- Seção de Guia de Compra -->
+    <!-- Guia de Compra -->
     <section class="section">
         <h2 class="section-title">Guia de Compra: Como Escolher seu Colchão</h2>
         <div class="guide-section">
@@ -57,26 +59,24 @@
         </div>
     </section>
 
-    <!-- Seção de Comparações -->
+    <!-- Comparações Dinâmicas -->
     <section class="section">
         <h2 class="section-title">Batalha dos Colchões: Comparações</h2>
         <div class="card-grid">
-            <a href="#" class="card">
-                <img src="https://via.placeholder.com/400x250.png?text=Marca+A+vs+B" alt="Comparativo entre duas marcas de colchão">
+            {% for comp in comparisons %}
+            {% with product1=comp.product1 product2=comp.product2 %}
+            <a href="{% url 'comparison_detail' slug=comp.slug %}" class="card">
+                <img src="{{ product1.image.url }}" alt="Comparativo {{ product1.name }} vs {{ product2.name }}">
                 <div class="card-content">
-                    <h3>Marca A vs. Marca B: Qual a melhor escolha?</h3>
-                    <p>Colocamos frente a frente duas gigantes do mercado. Veja quem vence em conforto, durabilidade e preço.</p>
+                    <h3>{{ product1.name }} vs {{ product2.name }}</h3>
+                    <p>Compare {{ product1.name }} e {{ product2.name }} em conforto, durabilidade e preço. Veja qual combina mais com você.</p>
                     <span class="card-link">Ver Comparativo &rarr;</span>
                 </div>
             </a>
-            <a href="#" class="card">
-                <img src="https://via.placeholder.com/400x250.png?text=Espuma+vs+Molas" alt="Comparativo entre colchão de espuma e de molas">
-                <div class="card-content">
-                    <h3>Espuma vs. Molas: A Batalha dos Clássicos</h3>
-                    <p>Ainda em dúvida entre a tecnologia da espuma e a tradição das molas? Nós te ajudamos a decidir.</p>
-                    <span class="card-link">Ver Comparativo &rarr;</span>
-                </div>
-            </a>
+            {% endwith %}
+            {% empty %}
+            <p>Nenhuma comparação disponível no momento.</p>
+            {% endfor %}
         </div>
     </section>
 

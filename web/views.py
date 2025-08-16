@@ -2,12 +2,23 @@ from django.shortcuts import render
 import requests
 from colchoes.models import Product
 
+from django.shortcuts import render
+from colchoes.models import Product, Comparison
+
 def home_page(request):
+    # Produtos em destaque
     featured_products = Product.objects.filter(is_active=True).order_by('-user_rating_score')[:3]
+
+    # Todas as comparações existentes, otimizadas
+    all_comparisons = Comparison.objects.select_related('product1', 'product2').all()
+
     context = {
-        'featured_products': featured_products
+        'featured_products': featured_products,
+        'comparisons': all_comparisons,
     }
+
     return render(request, 'web/home.html', context)
+
 
 def contact_page(request):
     return render(request, 'web/contact.html')
