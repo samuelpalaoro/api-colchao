@@ -25,6 +25,7 @@ class Product(models.Model):
     # --- 1. Informações Fundamentais e de Identificação ---
     name = models.CharField(max_length=255, help_text="O nome completo do produto. Ex: Colchão Queen Molas Ensacadas Freedom")
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, help_text="A marca deste colchão.")
+    price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Preço sugerido do colchão. Ex: 1999.99",null=True, blank=True)
     mattress_type = models.ForeignKey(MattressType, on_delete=models.PROTECT, help_text="A tecnologia principal do colchão.")
     is_active = models.BooleanField(default=True, help_text="Marque para que este produto apareça no site.")
 
@@ -100,3 +101,20 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Comparison(models.Model):
+    product1 = models.ForeignKey(Product, related_name='comparison_product1', on_delete=models.CASCADE)
+    product2 = models.ForeignKey(Product, related_name='comparison_product2', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, help_text="Data em que a comparação foi criada.")
+    slug = models.SlugField(max_length=255, unique=True, blank=True, help_text="URL amigável para a comparação.")
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f"{self.produtct1.slug}-vs-{self.product2.slug}")
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        if hasattr(self, 'product1') and hasattr(self, 'product2'):
+            return f'{self.product1.name} vs {self.product2.name}'
+        return 'Comparação (em processo de criação)'

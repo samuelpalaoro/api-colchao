@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 urlpatterns = [
  path('admin/', admin.site.urls),
  path('api/colchoes/', include('colchoes.urls')), # URLs da API
- path('', include('web.urls')),                 # URLs do Frontend
+ path('', include('web.urls')),        
+ path('',include('colchoes.urls'))         # URLs do Frontend
  ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

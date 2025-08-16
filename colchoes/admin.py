@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Brand, MattressType, Product
+from .models import Brand, MattressType, Product, Comparison
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
@@ -25,7 +25,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Informações Fundamentais', {
-            'fields': ('status', 'name', 'brand', 'mattress_type', 'size')
+            'fields': ('status', 'name', 'brand', 'price', 'mattress_type', 'size')
         }),
         ('SEO e URL', {
             'classes': ('collapse',),
@@ -72,3 +72,5 @@ class ProductAdmin(admin.ModelAdmin):
     autocomplete_fields = ['brand', 'mattress_type', 'main_competitor']
     readonly_fields = ('last_updated_by_user',)
     list_editable = ('status',)
+
+admin.site.register(Comparison)

@@ -1,0 +1,100 @@
+{% extends "web/base.html" %}
+
+{% block content %}
+
+
+<div class="comparison-page-container">
+    <div class="comparison-header">
+        <h1>Comparativo: {{ product1.name }} vs {{ product2.name }}</h1>
+    </div>
+
+    <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>{{ product1.name }}</th>
+                    <th>{{ product2.name }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Imagem</td>
+                    <td data-label="{{ product1.name }}"><img src="{{ product1.image.url }}" alt="{{ product1.name }}" class="product-image"></td>
+                    <td data-label="{{ product2.name }}"><img src="{{ product2.image.url }}" alt="{{ product2.name }}" class="product-image"></td>
+                </tr>
+                <tr>
+                    <td>Preço</td>
+                    <td data-label="{{ product1.name }}">R$ {{ product1.price }}</td>
+                    <td data-label="{{ product2.name }}">R$ {{ product2.price }}</td>
+                </tr>
+                <tr>
+                    <td>Firmeza</td>
+                    <td data-label="{{ product1.name }}">{{ product1.mattress_type }}</td>
+                    <td data-label="{{ product2.name }}">{{ product2.mattress_type }}</td>
+                </tr>
+               
+                <tr>
+                    <td>Prós</td>
+                    <td data-label="{{ product1.name }}">
+                        <ul>{% for pro in product1.pros_and_cons.pros %}<li>{{ pro }}</li>{% empty %}<li>N/A</li>{% endfor %}</ul>
+                    </td>
+                    <td data-label="{{ product2.name }}">
+                        <ul>{% for pro in product2.pros_and_cons.pros %}<li>{{ pro }}</li>{% empty %}<li>N/A</li>{% endfor %}</ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Contras</td>
+                    <td data-label="{{ product1.name }}">
+                        <ul>{% for con in product1.pros_and_cons.cons %}<li>{{ con }}</li>{% empty %}<li>N/A</li>{% endfor %}</ul>
+                    </td>
+                    <td data-label="{{ product2.name }}">
+                        <ul>{% for con in product2.pros_and_cons.cons %}<li>{{ con }}</li>{% empty %}<li>N/A</li>{% endfor %}</ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Introdução</td>
+                    <td data-label="{{ product1.name }}">{{ product1.introduction_text|linebreaks }}</td>
+                    <td data-label="{{ product2.name }}">{{ product2.introduction_text|linebreaks }}</td>
+                </tr>
+                <tr>
+                    <td>Conforto</td>
+                    <td data-label="{{ product1.name }}">{{ product1.comfort_section_text|linebreaks }}</td>
+                    <td data-label="{{ product2.name }}">{{ product2.comfort_section_text|linebreaks }}</td>
+                </tr>
+                <tr>
+                    <td>Tecnologia</td>
+                    <td data-label="{{ product1.name }}">{{ product1.technology_section_text|linebreaks }}</td>
+                    <td data-label="{{ product2.name }}">{{ product2.technology_section_text|linebreaks }}</td>
+                </tr>
+                <tr>
+                    <td>Para quem é indicado</td>
+                    <td data-label="{{ product1.name }}">{{ product1.who_is_it_for_text|linebreaks }}</td>
+                    <td data-label="{{ product2.name }}">{{ product2.who_is_it_for_text|linebreaks }}</td>
+                </tr>
+                {% if product1.technical_specs or product2.technical_specs %}
+                <tr>
+                    <td>Ficha Técnica</td>
+                    <td data-label="{{ product1.name }}">
+                        <ul>{% for key, value in product1.technical_specs.items %}<li><strong>{{ key|capfirst }}:</strong> {{ value }}</li>{% empty %}<li>N/A</li>{% endfor %}</ul>
+                    </td>
+                    <td data-label="{{ product2.name }}">
+                        <ul>{% for key, value in product2.technical_specs.items %}<li><strong>{{ key|capfirst }}:</strong> {{ value }}</li>{% empty %}<li>N/A</li>{% endfor %}</ul>
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td>Conclusão</td>
+                    <td data-label="{{ product1.name }}">{{ product1.conclusion_text|linebreaks }}</td>
+                    <td data-label="{{ product2.name }}">{{ product2.conclusion_text|linebreaks }}</td>
+                </tr>
+                <tr>
+                    <td>Onde Comprar</td>
+                    <td data-label="{{ product1.name }}"><a href="{{ product1.affiliate_link1 }}" class="cta-button" target="_blank" rel="noopener noreferrer">Ver Melhor Preço</a></td>
+                    <td data-label="{{ product2.name }}"><a href="{{ product2.affiliate_link1 }}" class="cta-button" target="_blank" rel="noopener noreferrer">Ver Melhor Preço</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

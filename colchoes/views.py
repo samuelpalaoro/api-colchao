@@ -12,3 +12,18 @@ class ColchaoRetrieveUpdateDestroyView (generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
     lookup_field = 'slug'  # Usando slug como campo de lookup
 
+
+from django.shortcuts import render, get_object_or_404
+from .models import Comparison
+
+def comparison_detail_view(request, slug):
+    comparison = get_object_or_404(Comparison, slug=slug)
+    product1 = comparison.product1
+    product2 = comparison.product2
+
+    context = {
+        'product1': product1,
+        'product2': product2,
+        'comparison': comparison
+    }
+    return render(request, 'web/comparison_template.html', context)

@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'web/css/contact.css' %}">
     <link rel="stylesheet" href="{% static 'web/css/product_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/comparison.css' %}">
+
 
     <title>{% block title %}Guia Definitivo de Colchões{% endblock %}</title>
     <meta name="description" content="{% block meta_description %}Encontre as melhores análises, comparações e guias de compra para escolher o colchão 
@@ -28,7 +30,6 @@
                 <li><a href="{% url 'web:faq' %}">FAQ</a></li>
                 <li><a href="{% url 'web:privacy_policy' %}">Política de Privacidade</a></li>
                 <li><a href="{% url 'web:terms_of_service' %}"> Termos de Serviço</a></li>
-                <li><a href="{% url 'web:product_detail' slug='exemplo-colchao' %}">Detalhes do Produto</a></li>
                 <!-- Adicionaremos o link para a lista de colchões mais tarde -->
             </ul>
         </nav>
