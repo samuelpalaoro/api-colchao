@@ -38,3 +38,30 @@ O objetivo é entregar **valor real ao usuário** com análises detalhadas e com
 ```bash
 git clone [URL-DO-SEU-REPOSITORIO-GIT]
 cd [NOME-DA-PASTA-DO-PROJETO]
+
+Crie e Ative um Ambiente Virtual:
+# Linux/macOS
+python3 -m venv venv
+source venv/bin/activate
+
+# Windows
+python -m venv venv
+.\venv\Scripts\activate
+
+Crie o arquivo requirements.txt:
+pip freeze > requirements.txt
+
+Instale as Dependências:
+pip install -r requirements.txt
+
+Aplique as migraçoes:
+python manage.py migrate
+
+Crie um Superusuário:
+python manage.py createsuperuser
+
+Rodando a Aplicação:
+python manage.py runserver
+
+
+
